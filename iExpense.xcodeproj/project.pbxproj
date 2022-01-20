@@ -58,10 +58,9 @@
 			isa = PBXGroup;
 			children = (
 				6B324B8B2797FC5E00288F5F /* iExpenseApp.swift */,
-				6B324B8D2797FC5E00288F5F /* ContentView.swift */,
-				6B96A22A2798D45200897E92 /* AddView.swift */,
-				6B96A2262798CE3300897E92 /* ExpenseItem.swift */,
-				6B96A2282798CE5900897E92 /* Expenses.swift */,
+				6B5C13E42798F131001A2726 /* Views */,
+				6B5C13E62798F18F001A2726 /* View Controllers */,
+				6B5C13E52798F186001A2726 /* Models */,
 				6B324B8F2797FC5F00288F5F /* Assets.xcassets */,
 				6B324B912797FC5F00288F5F /* Preview Content */,
 			);
@@ -74,6 +73,31 @@
 				6B324B922797FC5F00288F5F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6B5C13E42798F131001A2726 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6B324B8D2797FC5E00288F5F /* ContentView.swift */,
+				6B96A22A2798D45200897E92 /* AddView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6B5C13E52798F186001A2726 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6B96A2262798CE3300897E92 /* ExpenseItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6B5C13E62798F18F001A2726 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6B96A2282798CE5900897E92 /* Expenses.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
