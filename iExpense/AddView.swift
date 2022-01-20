@@ -41,6 +41,12 @@ struct AddView: View {
             }
             .navigationTitle(name ?? "New Expense")
             .toolbar {
+                ToolbarItemGroup(placement: .navigationBarLeading, content: {
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                })
+                
                 ToolbarItemGroup(placement: .navigationBarTrailing, content: {
                     Button("Add") {
                         addExpenseAndDismiss(named: name ?? "Empty", andType: type, withAmount: amount ?? 0)
