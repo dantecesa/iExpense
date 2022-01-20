@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExpenseItem: Identifiable {
+struct ExpenseItem: Identifiable, Codable {
     var id: UUID = UUID()
     let name: String
     let type: String
