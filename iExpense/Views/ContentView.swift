@@ -25,17 +25,7 @@ struct ContentView: View {
                     
                     ForEach(expenses.items) { item in
                         if item.type == selectedExpenseType {
-                            HStack {
-                                VStack (alignment: .leading) {
-                                    Text(item.name)
-                                    Text(item.dateTime, style: .date)
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
-                                }
-                                Spacer()
-                                Text("\(item.amount.formatted(.currency(code:  Locale.current.currencyCode ?? "USD")))")
-                                    .foregroundColor(.secondary)
-                            }
+                            ExpenseTableCell(withExpenseItem: item)
                         }
                     }.onDelete(perform: removeItems)
                 }
