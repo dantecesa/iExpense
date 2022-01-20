@@ -27,7 +27,7 @@ struct AddView: View {
                             Text(expenseType)
                         }
                     }.pickerStyle(.segmented)
-                    TextField("Amount", value: $amount, format: .currency(code: "USD"))
+                    TextField("Amount", value: $amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                         .keyboardType(.decimalPad)
                 } header: {
                     Text("Expense Details")

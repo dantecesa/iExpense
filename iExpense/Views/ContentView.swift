@@ -23,7 +23,7 @@ struct ContentView: View {
                                 .foregroundColor(.secondary)
                         }
                         Spacer()
-                        Text("\(item.amount.formatted(.currency(code: "USD")))")
+                        Text("\(item.amount.formatted(.currency(code:  Locale.current.currencyCode ?? "USD")))")
                             .foregroundColor(.secondary)
                     }
                 }.onDelete(perform: removeItems)
