@@ -10,23 +10,35 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var expenses = Expenses()
     @State var showingAddView: Bool = false
+    @State var selectedExpenseType: String = "Business"
+    let expenseTypes: [String] = ["Business", "Personal"]
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack (alignment: .leading) {
-                            Text(item.name)
-                            Text(item.dateTime, style: .date)
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
+                Section {
+                    Picker("Expense Type", selection: $selectedExpenseType) {
+                        ForEach(expenseTypes, id:\.self) { type in
+                            Text(type)
                         }
-                        Spacer()
-                        Text("\(item.amount.formatted(.currency(code:  Locale.current.currencyCode ?? "USD")))")
-                            .foregroundColor(.secondary)
-                    }
-                }.onDelete(perform: removeItems)
+                    }.pickerStyle(.segmented)
+                    
+                    ForEach(expenses.items) { item in
+                        if item.type == selectedExpenseType {
+                            HStack {
+                                VStack (alignment: .leading) {
+                                    Text(item.name)
+                                    Text(item.dateTime, style: .date)
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                }
+                                Spacer()
+                                Text("\(item.amount.formatted(.currency(code:  Locale.current.currencyCode ?? "USD")))")
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }.onDelete(perform: removeItems)
+                }
             }
             .navigationTitle("iExpense")
             .toolbar {
