@@ -12,4 +12,5 @@ struct ExpenseItem: Identifiable {
     let name: String
     let type: String
     let amount: Double
+    let dateTime: Date
 }

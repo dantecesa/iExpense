@@ -51,7 +51,7 @@ struct AddView: View {
     }
     
     func addExpenseAndDismiss(named: String, andType: String, withAmount: Double) {
-        expenses.items.append(ExpenseItem(name: name ?? "", type: type, amount: amount ?? 0))
+        expenses.items.append(ExpenseItem(name: name ?? "", type: type, amount: amount ?? 0, dateTime: Date.now))
         dismiss()
     }
 }

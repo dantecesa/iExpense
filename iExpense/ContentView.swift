@@ -16,7 +16,12 @@ struct ContentView: View {
             List {
                 ForEach(expenses.items) { item in
                     HStack {
-                        Text(item.name)
+                        VStack (alignment: .leading) {
+                            Text(item.name)
+                            Text(item.dateTime, style: .date)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                        }
                         Spacer()
                         Text("\(item.amount.formatted(.currency(code: "USD")))")
                             .foregroundColor(.secondary)
