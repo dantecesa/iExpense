@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var expenses = Expenses()
     @State var showingAddView: Bool = false
-    @State var selectedExpenseType: String = "Business"
-    let expenseTypes: [String] = ["Business", "Personal"]
+    @State var selectedExpenseType: String = "All"
+    let expenseTypes: [String] = ["All", "Business", "Personal"]
     
     var body: some View {
         NavigationView {
@@ -24,7 +24,9 @@ struct ContentView: View {
                     }.pickerStyle(.segmented)
                     
                     ForEach(expenses.items) { item in
-                        if item.type == selectedExpenseType {
+                        if selectedExpenseType == "All" {
+                            ExpenseTableCell(withExpenseItem: item)
+                        } else if selectedExpenseType == item.type {
                             ExpenseTableCell(withExpenseItem: item)
                         }
                     }.onDelete(perform: removeItems)
