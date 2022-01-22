@@ -41,7 +41,7 @@ struct ContentView: View {
             .sheet(isPresented: $showingAddView) {
                 AddView(expenses: expenses)
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     func removeItems(at offsets: IndexSet) {
