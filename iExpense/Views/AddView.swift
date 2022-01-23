@@ -21,25 +21,28 @@ struct AddView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Expense Name", text: $name ?? "")
                     Picker("Type", selection: $type) {
                         ForEach(expenseTypes, id:\.self) { expenseType in
                             Text(expenseType)
                         }
                     }.pickerStyle(.segmented)
-                    TextField("Amount", value: $amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-                        .keyboardType(.decimalPad)
-                } header: {
-                    Text("Expense Details")
                 }
                 
                 Section {
-                    Button("Add") {
-                        addExpenseAndDismiss(named: name ?? "Empty", andType: type, withAmount: amount ?? 0)
-                    }
+                    TextField("Expense Name", text: $name ?? "")
+                } header: {
+                    Text("Title")
+                }
+                
+                Section {
+                    TextField("Amount", value: $amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                        .keyboardType(.decimalPad)
+                } header: {
+                    Text("Amount")
                 }
             }
             .navigationTitle(name ?? "New Expense")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading, content: {
                     Button("Cancel") {
@@ -49,15 +52,16 @@ struct AddView: View {
                 
                 ToolbarItemGroup(placement: .navigationBarTrailing, content: {
                     Button("Add") {
-                        addExpenseAndDismiss(named: name ?? "Empty", andType: type, withAmount: amount ?? 0)
+                        addExpenseAndDismiss(named: name ?? "No title", andType: type, withAmount: amount ?? 0)
                     }
+                    .disabled(amount == nil)
                 })
             }
         }
     }
     
     func addExpenseAndDismiss(named: String, andType: String, withAmount: Double) {
-        expenses.items.append(ExpenseItem(name: name ?? "", type: type, amount: amount ?? 0, dateTime: Date.now))
+        expenses.items.append(ExpenseItem(name: name ?? "No title", type: type, amount: amount ?? 0, dateTime: Date.now))
         dismiss()
     }
 }

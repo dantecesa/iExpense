@@ -22,7 +22,8 @@ struct ContentView: View {
                             Text(type)
                         }
                     }.pickerStyle(.segmented)
-                    
+                }
+                Section {
                     ForEach(expenses.items) { item in
                         if selectedExpenseType == "All" {
                             ExpenseTableCell(withExpenseItem: item)
@@ -38,6 +39,11 @@ struct ContentView: View {
                     showingAddView = true
                 } label: {
                     Image(systemName: "plus")
+                }
+            }
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    EditButton().disabled(expenses.items.count < 1)
                 }
             }
             .sheet(isPresented: $showingAddView) {
