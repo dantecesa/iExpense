@@ -22,6 +22,8 @@ struct ExpenseTableCell: View {
             Text("\(withExpenseItem.amount.formatted(.currency(code:  Locale.current.currencyCode ?? "USD")))")
                 .foregroundColor(expenseColor(forValue: withExpenseItem.amount))
         }
+        .accessibilityElement()
+        .accessibilityLabel("\(withExpenseItem.amount) called \(withExpenseItem.name) on \(withExpenseItem.dateTime, style: .date)")
     }
     
     func expenseColor(forValue: Double) -> Color {

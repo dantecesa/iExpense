@@ -54,7 +54,7 @@ struct AddView: View {
                     Button("Add") {
                         addExpenseAndDismiss(named: name ?? "No title", andType: type, withAmount: amount ?? 0)
                     }
-                    .disabled(amount == nil)
+                    .disabled(((name?.count ?? 0) < 1) || amount == nil)
                 })
             }
         }
